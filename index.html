@@ -3,10 +3,513 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>Tesla Model Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        tesla: {
+                            red: '#e31837',
+                            blue: '#3465a4',
+                            black: '#000000',
+                            white: '#ffffff'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+        }
+        
+        .tesla-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .speedometer-glow {
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: .7; }
+            50% { opacity: 0.7; }
+        }
+        
+        .charging-animation {
+            animation: charging-pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes charging-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #00ff88, #0088ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
 </head>
-<body class="min-h-screen bg-gray-50 flex items-center justify-center">
-    <h1 class="text-4xl font-bold text-gray-800">Hello world</h1>
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Header -->
+    <nav class="fixed top-0 w-full z-50">
+        <div class="tesla-card mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-4">
+                    <div class="w-8 h-8 bg-tesla-red rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">T</span>
+                    </div>
+                    <h1 class="text-white text-xl font-bold">TESLA</h1>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <span class="text-gray-400 text-sm">Model S</span>
+                    <div class="w-3 h-3 bg-green-500 rounded-full pulse-animation"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard -->
+    <div class="pt-20 px-4 sm:px-6 lg:px-8 pb-8">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Speedometer Section -->
+            <div class="mb-8">
+                <div class="tesla-card rounded-3xl p-8 text-center">
+                    <div class="relative w-80 h-80 mx-auto mb-6">
+                        <!-- Speedometer -->
+                        <svg class="w-full h-full transform -rotate-90" viewBox="0 0 200 200">
+                            <defs>
+                                <linearGradient id="speedGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#00dd77;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#006644;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Background Circle -->
+                            <circle cx="100" cy="100" r="90" stroke="rgba(255,255,255,0.1)" stroke-width="20" fill="none"/>
+                            <!-- Speed Arc -->
+                            <path id="speedPath" d="M 100,20 A 80,80 0 0,1 180,100" stroke="url(#speedGradient)" stroke-width="20" fill="none" stroke-linecap="round"/>
+                            <!-- Speed Markings -->
+                            <g class="text-white text-xs">
+                                <circle cx="117" cy="83" r="2" fill="white"/>
+                                <circle cx="134" cy="69" r="2" fill="white"/>
+                                <circle cx="150" cy="50" r="2" fill="white"/>
+                                <circle cx="164" cy="36" r="2" fill="white"/>
+                                <circle cx="178" cy="20" r="2" fill="white"/>
+                            </g>
+                        </svg>
+                        
+                        <!-- Speed Display -->
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="speedometer-glow bg-black bg-opacity-50 rounded-full w-48 h-48 flex items-center justify-center">
+                                <div class="text-center">
+                                    <div id="speedValue" class="text-4xl font-bold text-white mb-2">0</div>
+                                    <div class="text-sm text-gray-400">MPH</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Speed Controls -->
+                    <div class="flex justify-center space-x-4 mb-4">
+                        <button onclick="accelerate()" class="bg-tesla-red hover:bg-red-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200">
+                            Accelerate
+                        </button>
+                        <button onclick="brake()" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200">
+                            Brake
+                        </button>
+                        <button onclick="park()" class="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-full font-semibold transition-all duration-200">
+                            Park
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Row -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                <!-- Battery Status -->
+                <div class="tesla-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-white font-semibold">Battery</h3>
+                        <div class="w-4 h-4 bg-green-500 rounded-full pulse-animation"></div>
+                    </div>
+                    <div class="relative">
+                        <div class="text-2xl font-bold gradient-text mb-2" id="batteryPercent">78%</div>
+                        <div class="w-full bg-gray-700 rounded-full h-3">
+                            <div id="batteryBar" class="bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 h-3 rounded-full transition-all duration-1000" style="width: 78%"></div>
+                        </div>
+                        <div class="text-sm text-gray-400 mt-2" id="batteryRange">267 mi remaining</div>
+                    </div>
+                </div>
+
+                <!-- Climate -->
+                <div class="tesla-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-white font-semibold">Climate</h3>
+                        <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="text-2xl font-bold text-white mb-2" id="temperature">72°F</div>
+                    <div class="flex justify-between">
+                        <button onclick="changeTemp(-1)" class="text-gray-400 hover:text-white">−</button>
+                        <button onclick="changeTemp(1)" class="text-gray-400 hover:text-white">+</button>
+                    </div>
+                </div>
+
+                <!-- Autopilot -->
+                <div class="tesla-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-white font-semibold">Autopilot</h3>
+                        <div id="autopilotStatus" class="w-4 h-4 bg-green-500 rounded-full pulse-animation"></div>
+                    </div>
+                    <div class="text-lg font-bold text-white mb-2" id="autopilotMode">Active</div>
+                    <button onclick="toggleAutopilot()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm font-semibold transition-all duration-200">
+                        Toggle
+                    </button>
+                </div>
+
+                <!-- Range -->
+                <div class="tesla-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-white font-semibold">Range</h3>
+                        <div class="w-4 h-4 bg-green-500 rounded-full pulse-animation"></div>
+                    </div>
+                    <div class="text-2xl font-bold text-white mb-2" id="totalRange">405 mi</div>
+                    <div class="text-sm text-gray-400">Total capacity</div>
+                </div>
+            </div>
+
+            <!-- Vehicle Controls -->
+            <div class="tesla-card rounded-3xl p-8 mb-8">
+                <h2 class="text-2xl font-bold text-white mb-6 text-center">Vehicle Controls</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button onclick="toggleCharging()" id="chargeBtn" class="bg-green-600 hover:bg-green-700 text-white p-6 rounded-2xl font-semibold transition-all duration-200 charging-animation">
+                        <div class="text-xl mb-2">⚡</div>
+                        <div id="chargingText">Start Charging</div>
+                    </button>
+                    
+                    <button onclick="toggleDoors()" id="doorBtn" class="bg-blue-600 hover:bg-blue-700 text-white p-6 rounded-2xl font-semibold transition-all duration-200">
+                        <div class="text-xl mb-2">🚪</div>
+                        <div id="doorText">Lock Doors</div>
+                    </button>
+                    
+                    <button onclick="toggleFrunk()" id="frunkBtn" class="bg-purple-600 hover:bg-purple-700 text-white p-6 rounded-2xl font-semibold transition-all duration-200">
+                        <div class="text-xl mb-2">🚗</div>
+                        <div id="frunkText">Open Frunk</div>
+                    </button>
+                    
+                    <button onclick="sendToSpace()" class="bg-red-600 hover:bg-red-700 text-white p-6 rounded-2xl font-semibold transition-all duration-200">
+                        <div class="text-xl mb-2">🚀</div>
+                        <div>Space Mode</div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Energy Consumption -->
+            <div class="tesla-card rounded-2xl p-6 mb-8">
+                <h3 class="text-white font-semibold mb-4">Energy Consumption</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-green-400 mb-1">45 Wh/mi</div>
+                        <div class="text-sm text-gray-400">Efficiency</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-blue-400 mb-1">2.3 kWh</div>
+                        <div class="text-sm text-gray-400">Energy Used Today</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-purple-400 mb-1">341 mi</div>
+                        <div class="text-sm text-gray-400">Range Estimate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charging Stations -->
+            <div class="tesla-card rounded-2xl p-6">
+                <h3 class="text-white font-semibold mb-4">Nearby Charging Stations</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
+                        <div>
+                            <div class="text-white font-semibold">Supercharger Downtown</div>
+                            <div class="text-sm text-gray-400">2.3 mi away • Available</div>
+                        </div>
+                        <div class="text-green-400 font-semibold">Open</div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
+                        <div>
+                            <div class="text-white font-semibold">Supercharger Mall</div>
+                            <div class="text-sm text-gray-400">5.7 mi away • 2 available</div>
+                        </div>
+                        <div class="text-green-400 font-semibold">Open</div>
+                    </div>
+                    <div class="flex items-center justify-between p-3 bg-gray-800 rounded-lg">
+                        <div>
+                            <div class="text-white font-semibold">Destination Charger</div>
+                            <div class="text-sm text-gray-400">1.1 mi away • Available</div>
+                        </div>
+                        <div class="text-yellow-400 font-semibold">Limited</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dashboard State
+        let currentSpeed = 0;
+        let currentTemp = 72;
+        let batteryLevel = 78;
+        let isCharging = false;
+        let doorsLocked = true;
+        let frunkOpen = false;
+        let autopilotActive = true;
+        let chargingAnimations = [];
+
+        // Speed Control Functions
+        function accelerate() {
+            currentSpeed = Math.min(currentSpeed + 15, 120);
+            updateSpeedometer();
+            playTeslaSound();
+        }
+
+        function brake() {
+            currentSpeed = Math.max(currentSpeed - 20, 0);
+            updateSpeedometer();
+        }
+
+        function park() {
+            currentSpeed = 0;
+            updateSpeedometer();
+            doorsLocked = true;
+            updateDoorButton();
+        }
+
+        function updateSpeedometer() {
+            const speedElement = document.getElementById('speedValue');
+            const pathElement = document.getElementById('speedPath');
+            
+            speedElement.textContent = currentSpeed;
+            
+            // Update speed path stroke-dasharray for animation
+            const maxSpeed = 120;
+            const circumference = 2 * Math.PI * 90; // radius is 90
+            const arcLength = (currentSpeed / maxSpeed) * (circumference * 0.5);
+            
+            if (pathElement) {
+                pathElement.style.strokeDasharray = `${arcLength} ${circumference}`;
+                pathElement.style.strokeDashoffset = '0';
+                pathElement.style.transition = 'stroke-dasharray 0.5s ease-in-out';
+            }
+        }
+
+        // Temperature Control
+        function changeTemp(delta) {
+            currentTemp = Math.max(60, Math.min(85, currentTemp + delta));
+            document.getElementById('temperature').textContent = currentTemp + '°F';
+        }
+
+        // Charging Control
+        function toggleCharging() {
+            isCharging = !isCharging;
+            const chargeBtn = document.getElementById('chargeBtn');
+            const chargingText = document.getElementById('chargingText');
+            
+            if (isCharging) {
+                chargeBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                chargeBtn.classList.add('bg-red-600', 'hover:bg-red-700');
+                chargingText.textContent = 'Stop Charging';
+                startChargingAnimation();
+            } else {
+                chargeBtn.classList.remove('bg-red-600', 'hover:bg-red-700');
+                chargeBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+                chargingText.textContent = 'Start Charging';
+                stopChargingAnimation();
+            }
+        }
+
+        function startChargingAnimation() {
+            // Battery charging simulation
+            const chargingInterval = setInterval(() => {
+                if (batteryLevel < 95 && isCharging) {
+                    batteryLevel += 0.5;
+                    updateBattery();
+                } else {
+                    clearInterval(chargingInterval);
+                }
+            }, 1000);
+            
+            chargingAnimations.push(chargingInterval);
+        }
+
+        function stopChargingAnimation() {
+            chargingAnimations.forEach(interval => clearInterval(interval));
+            chargingAnimations = [];
+        }
+
+        function updateBattery() {
+            document.getElementById('batteryPercent').textContent = batteryLevel.toFixed(0) + '%';
+            document.getElementById('batteryBar').style.width = batteryLevel + '%';
+            document.getElementById('batteryRange').textContent = Math.round(batteryLevel * 3.4) + ' mi remaining';
+        }
+
+        // Door Control
+        function toggleDoors() {
+            doorsLocked = !doorsLocked;
+            updateDoorButton();
+        }
+
+        function updateDoorButton() {
+            const doorBtn = document.getElementById('doorBtn');
+            const doorText = document.getElementById('doorText');
+            
+            if (doorsLocked) {
+                doorBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                doorBtn.classList.add('bg-gray-600', 'hover:bg-gray-700');
+                doorText.textContent = 'Unlock Doors';
+            } else {
+                doorBtn.classList.remove('bg-gray-600', 'hover:bg-gray-700');
+                doorBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                doorText.textContent = 'Lock Doors';
+            }
+        }
+
+        // Frunk Control
+        function toggleFrunk() {
+            frunkOpen = !frunkOpen;
+            const frunkBtn = document.getElementById('frunkBtn');
+            const frunkText = document.getElementById('frunkText');
+            
+            if (frunkOpen) {
+                frunkBtn.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+                frunkBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+                frunkText.textContent = 'Close Frunk';
+            } else {
+                frunkBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                frunkBtn.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                frunkText.textContent = 'Open Frunk';
+            }
+        }
+
+        // Autopilot Control
+        function toggleAutopilot() {
+            autopilotActive = !autopilotActive;
+            const statusElement = document.getElementById('autopilotStatus');
+            const modeElement = document.getElementById('autopilotMode');
+            
+            if (autopilotActive) {
+                statusElement.classList.add('pulse-animation');
+                statusElement.classList.remove('bg-red-500');
+                statusElement.classList.add('bg-green-500');
+                modeElement.textContent = 'Active';
+            } else {
+                statusElement.classList.remove('pulse-animation');
+                statusElement.classList.remove('bg-green-500');
+                statusElement.classList.add('bg-red-500');
+                modeElement.textContent = 'Disabled';
+            }
+        }
+
+        // Tesla Special Feature
+        function sendToSpace() {
+            alert('🚀 Elon Mode Activated! Preparing for Mars mission... 🚀');
+            
+            // Add some visual effects
+            document.body.style.background = 'linear-gradient(135deg, #000000 0%, #1a0033 50%, #000000 100%)';
+            
+            // Create shooting star effect
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const star = document.createElement('div');
+                    star.className = 'fixed w-2 h-2 bg-white rounded-full opacity-80';
+                    star.style.left = Math.random() * window.innerWidth + 'px';
+                    star.style.top = Math.random() * window.innerHeight + 'px';
+                    star.style.animation = 'shooting-star 2s linear forwards';
+                    document.body.appendChild(star);
+                    
+                    setTimeout(() => {
+                        document.body.removeChild(star);
+                    }, 2000);
+                }, i * 200);
+            }
+            
+            // Reset background after effect
+            setTimeout(() => {
+                document.body.style.background = 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)';
+            }, 3000);
+        }
+
+        // Add shooting star animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shooting-star {
+                0% {
+                    transform: translateY(0) translateX(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) translateX(100vw);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Tesla Sound Effects (Placeholder)
+        function playTeslaSound() {
+            // In a real implementation, you'd play actual Tesla sounds
+            console.log('🚗 Tesla acceleration sound played');
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSpeedometer();
+            updateBattery();
+            updateDoorButton();
+            updateFrunkButton();
+            
+            // Update autopilot display
+            const statusElement = document.getElementById('autopilotStatus');
+            const modeElement = document.getElementById('autopilotMode');
+            
+            if (autopilotActive) {
+                statusElement.classList.add('pulse-animation');
+                statusElement.classList.add('bg-green-500');
+                modeElement.textContent = 'Active';
+            } else {
+                statusElement.classList.add('bg-red-500');
+                modeElement.textContent = 'Disabled';
+            }
+        });
+
+        function updateFrunkButton() {
+            const frunkBtn = document.getElementById('frunkBtn');
+            const frunkText = document.getElementById('frunkText');
+            
+            if (frunkOpen) {
+                frunkBtn.classList.add('bg-green-600', 'hover:bg-green-700');
+                frunkText.textContent = 'Close Frunk';
+            } else {
+                frunkBtn.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                frunkText.textContent = 'Open Frunk';
+            }
+        }
+    </script>
 </body>
 </html>
