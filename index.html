@@ -3,10 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
+    <title>UI Library Demo</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Import UI Library -->
+    <link rel="stylesheet" href="ui-library/ui-components.css">
 </head>
-<body class="min-h-screen bg-gray-50 flex items-center justify-center">
-    <h1 class="text-4xl font-bold text-gray-800">Hello world</h1>
+<body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 py-6">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">UI Library Demo</h1>
+            <p class="text-gray-600">Beautiful black and white button components with shadcn-inspired design</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Button Variants Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-8">Button Variants</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Primary Button -->
+                <div class="space-y-2">
+                    <h3 class="text-sm font-medium text-gray-700">Primary</h3>
+                    <button class="ui-btn ui-btn-primary w-full">
+                        Primary Button
+                    </button>
+                </div>
+
+                <!-- Secondary Button -->
+                <div class="space-y-2">
+                    <h3 class="text-sm font-medium text-gray-700">Secondary</h3>
+                    <button class="ui-btn ui-btn-secondary w-full">
+                        Secondary Button
+                    </button>
+                </div>
+
+                <!-- Ghost Button -->
+                <div class="space-y-2">
+                    <h3 class="text-sm font-medium text-gray-700">Ghost</h3>
+                    <button class="ui-btn ui-btn-ghost w-full">
+                        Ghost Button
+                    </button>
+                </div>
+
+                <!-- Outline Button -->
+                <div class="space-y-2">
+                    <h3 class="text-sm font-medium text-gray-700">Outline</h3>
+                    <button class="ui-btn ui-btn-outline w-full">
+                        Outline Button
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Button Sizes Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-8">Button Sizes</h2>
+            <div class="flex flex-wrap items-center gap-4">
+                <button class="ui-btn ui-btn-primary ui-btn-sm">Small Button</button>
+                <button class="ui-btn ui-btn-primary">Default Button</button>
+                <button class="ui-btn ui-btn-primary ui-btn-lg">Large Button</button>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-8">Interactive Demo</h2>
+            <div class="bg-white rounded-lg border border-gray-200 p-6">
+                <div class="flex flex-wrap gap-4 mb-6">
+                    <button id="demo-btn-1" class="ui-btn ui-btn-primary">Click Me!</button>
+                    <button id="demo-btn-2" class="ui-btn ui-btn-secondary">Counter: <span id="counter">0</span></button>
+                    <button id="demo-btn-3" class="ui-btn ui-btn-outline">Toggle Mode</button>
+                </div>
+                <div id="demo-output" class="text-gray-600">
+                    Click any button above to see interactions in action!
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Example Section -->
+        <section>
+            <h2 class="text-2xl font-semibold text-gray-900 mb-8">How to Use</h2>
+            <div class="bg-gray-900 rounded-lg p-6 text-green-400 font-mono text-sm overflow-x-auto">
+                <pre><code>&lt;!-- Basic Usage --&gt;
+&lt;button class="ui-btn ui-btn-primary"&gt;Primary Button&lt;/button&gt;
+
+&lt;!-- With Size Variants --&gt;
+&lt;button class="ui-btn ui-btn-secondary ui-btn-sm"&gt;Small Button&lt;/button&gt;
+&lt;button class="ui-btn ui-btn-outline ui-btn-lg"&gt;Large Button&lt;/button&gt;
+
+&lt;!-- JavaScript Factory Function --&gt;
+&lt;script&gt;
+const button = createButton({
+  text: 'Dynamic Button',
+  variant: 'primary',
+  size: 'default',
+  onClick: () => console.log('Clicked!')
+});
+document.body.appendChild(button);
+&lt;/script&gt;</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- Import JavaScript -->
+    <script src="ui-library/ui-components.js"></script>
+    <script>
+        // Demo interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            const output = document.getElementById('demo-output');
+            const counterSpan = document.getElementById('counter');
+            let count = 0;
+
+            // Demo button 1
+            document.getElementById('demo-btn-1').addEventListener('click', () => {
+                output.innerHTML = '🎉 Primary button clicked! Notice the smooth ripple effect and hover animations.';
+            });
+
+            // Demo button 2 (counter)
+            document.getElementById('demo-btn-2').addEventListener('click', () => {
+                count++;
+                counterSpan.textContent = count;
+                output.innerHTML = `🔢 Counter button clicked! Current count: <strong>${count}</strong>`;
+            });
+
+            // Demo button 3 (toggle)
+            let isActive = false;
+            document.getElementById('demo-btn-3').addEventListener('click', () => {
+                isActive = !isActive;
+                document.getElementById('demo-btn-3').textContent = isActive ? 'Disable Mode' : 'Toggle Mode';
+                output.innerHTML = `🔄 Toggle ${isActive ? 'activated' : 'deactivated'}! Button state changed.`;
+            });
+
+            // Show library is loaded
+            setTimeout(() => {
+                if (window.UIButton) {
+                    console.log('✅ UI Library loaded successfully!');
+                }
+            }, 100);
+        });
+    </script>
 </body>
 </html>
