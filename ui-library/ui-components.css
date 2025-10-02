@@ -1,256 +1,148 @@
 /* UI Library - Button Components */
 
-/* Base button styles - Enhanced with premium rounded design */
+/* Base button styles - shadcn inspired design */
 .ui-btn {
   @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all duration-300 ease-out;
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
   @apply disabled:pointer-events-none disabled:opacity-50;
-  @apply border border-transparent;
   
-  /* Premium rounded corners and spacing */
-  border-radius: 16px;
-  padding: 0.75rem 1.5rem;
-  min-height: 3rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  /* shadcn inspired border radius and styling */
+  border-radius: 0.375rem; /* 6px */
+  border: 1px solid #e5e7eb; /* grey border */
+  padding: 0.5rem 1rem;
+  min-height: 2.5rem;
+  font-weight: 500;
   position: relative;
   overflow: hidden;
   
   /* Enhanced visual depth */
-  backdrop-filter: blur(8px);
   transform-origin: center;
   will-change: transform, box-shadow;
   
   /* Smooth scaling animation */
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Enhanced hover and active effects with premium animations */
+/* Subtle hover and active effects - shadcn style */
 .ui-btn:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 
-    0 8px 25px rgba(0, 0, 0, 0.12),
-    0 4px 10px rgba(0, 0, 0, 0.08),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition-duration: 0.2s;
 }
 
 .ui-btn:active {
-  transform: translateY(-1px) scale(0.98);
+  transform: translateY(0);
   transition-duration: 0.1s;
 }
 
-/* Primary Button - Premium black with gradient and glass effect */
+/* Primary Button - shadcn style */
 .ui-btn-primary {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-  @apply text-white border-transparent;
-  box-shadow: 
-    0 4px 14px rgba(0, 0, 0, 0.15),
-    0 2px 8px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000000;
+  color: white;
+  border-color: #e5e7eb;
 }
 
 .ui-btn-primary:hover {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  box-shadow: 
-    0 12px 28px rgba(0, 0, 0, 0.25),
-    0 6px 15px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: #1a1a1a;
+  border-color: #d1d5db;
 }
 
 .ui-btn-primary:active {
-  background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
-  box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: #0d0d0d;
 }
 
 .ui-btn-primary:focus-visible {
   @apply ring-gray-600 ring-offset-white;
-  box-shadow: 
-    0 0 0 3px rgba(37, 99, 235, 0.2),
-    0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Secondary Button - Premium white with glass morphism */
+/* Secondary Button - shadcn style */
 .ui-btn-secondary {
-  background: rgba(255, 255, 255, 0.8);
-  @apply text-gray-900;
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
-    0 4px 16px rgba(0, 0, 0, 0.05),
-    0 2px 8px rgba(0, 0, 0, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: #374151;
+  color: white;
+  border-color: #e5e7eb;
 }
 
 .ui-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 
-    0 12px 28px rgba(0, 0, 0, 0.08),
-    0 6px 15px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  background: #4b5563;
+  border-color: #d1d5db;
 }
 
 .ui-btn-secondary:active {
-  background: rgba(248, 250, 252, 0.9);
-  box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  background: #6b7280;
 }
 
 .ui-btn-secondary:focus-visible {
   @apply ring-gray-300 ring-offset-white;
-  box-shadow: 
-    0 0 0 3px rgba(156, 163, 175, 0.2),
-    0 8px 25px rgba(0, 0, 0, 0.05);
 }
 
-/* Ghost Button - Ultra-premium transparent with subtle animations */
+/* Ghost Button - shadcn style */
 .ui-btn-ghost {
-  @apply bg-transparent text-gray-700 border-transparent;
+  background: transparent;
+  color: white;
+  border-color: #e5e7eb;
   position: relative;
 }
 
-.ui-btn-ghost::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.ui-btn-ghost:hover::before {
-  opacity: 1;
-}
-
 .ui-btn-ghost:hover {
-  @apply text-gray-900 bg-gray-50/50;
-  backdrop-filter: blur(8px);
-  box-shadow: 
-    0 8px 25px rgba(0, 0, 0, 0.04),
-    0 0 0 1px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #d1d5db;
 }
 
 .ui-btn-ghost:active {
-  @apply bg-gray-100/60;
-  box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.03),
-    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .ui-btn-ghost:focus-visible {
   @apply ring-gray-300 ring-offset-white;
-  box-shadow: 
-    0 0 0 3px rgba(156, 163, 175, 0.15),
-    0 8px 25px rgba(0, 0, 0, 0.04);
 }
 
-/* Outline Button - Premium border with glass effect */
+/* Outline Button - shadcn style */
 .ui-btn-outline {
-  @apply bg-transparent text-gray-700;
-  background: rgba(255, 255, 255, 0.02);
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 1px 3px rgba(0, 0, 0, 0.05);
+  background: transparent;
+  color: white;
+  border: 1px solid #e5e7eb;
 }
 
 .ui-btn-outline:hover {
-  @apply text-gray-900;
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 
-    0 8px 25px rgba(0, 0, 0, 0.06),
-    0 0 0 1px rgba(255, 255, 255, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: #d1d5db;
 }
 
 .ui-btn-outline:active {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(0, 0, 0, 0.2);
-  box-shadow: 
-    0 4px 12px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .ui-btn-outline:focus-visible {
   @apply ring-gray-300 ring-offset-white;
-  box-shadow: 
-    0 0 0 3px rgba(156, 163, 175, 0.2),
-    0 8px 25px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Enhanced size variants with premium rounded design */
+/* Enhanced size variants - shadcn style */
 .ui-btn-sm {
   @apply text-xs;
-  padding: 0.625rem 1.25rem;
-  min-height: 2.5rem;
-  border-radius: 12px;
-  font-weight: 600;
+  padding: 0.375rem 0.75rem;
+  min-height: 2rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
 }
 
 .ui-btn-lg {
   @apply text-base;
-  padding: 1rem 2rem;
-  min-height: 3.5rem;
-  border-radius: 20px;
-  font-weight: 600;
+  padding: 0.625rem 1.5rem;
+  min-height: 3rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
 }
 
-/* Extra large variant for premium feel */
+/* Extra large variant */
 .ui-btn-xl {
   @apply text-lg;
-  padding: 1.25rem 2.5rem;
-  min-height: 4rem;
-  border-radius: 24px;
-  font-weight: 600;
+  padding: 0.875rem 2rem;
+  min-height: 3.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
 }
 
-/* Enhanced ripple effect for premium feel */
-.ui-btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translate(-50%, -50%) scale(0);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.ui-btn:active::before {
-  transform: translate(-50%, -50%) scale(4);
-}
-
-/* Subtle glow effect for premium buttons */
-.ui-btn::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.ui-btn:hover::after {
-  opacity: 1;
-}
+/* Simple shadcn-style button effects */
 
 /* Enhanced dark mode variants with premium glass effects */
 @media (prefers-color-scheme: dark) {
@@ -307,50 +199,45 @@
   }
 }
 
-/* Premium gradient button variants */
+/* Gradient button variants - shadcn style */
 .ui-btn-gradient {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  @apply text-white border-transparent;
-  box-shadow: 
-    0 4px 14px rgba(102, 126, 234, 0.25),
-    0 2px 8px rgba(118, 75, 162, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  color: white;
+  border-color: #e5e7eb;
 }
 
 .ui-btn-gradient:hover {
   background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-  box-shadow: 
-    0 12px 28px rgba(102, 126, 234, 0.35),
-    0 6px 15px rgba(118, 75, 162, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border-color: #d1d5db;
 }
 
 .ui-btn-gradient:active {
   background: linear-gradient(135deg, #4c51bf 0%, #581c87 100%);
 }
 
-/* Neumorphism style button */
+/* Neumorphism style button - shadcn inspired */
 .ui-btn-neumorphic {
-  background: #f3f4f6;
-  @apply text-gray-700 border-transparent;
+  background: #374151;
+  color: white;
+  border-color: #e5e7eb;
   box-shadow: 
-    8px 8px 16px rgba(0, 0, 0, 0.1),
-    -8px -8px 16px rgba(255, 255, 255, 0.7),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 .ui-btn-neumorphic:hover {
+  background: #4b5563;
+  border-color: #d1d5db;
   box-shadow: 
-    12px 12px 24px rgba(0, 0, 0, 0.12),
-    -12px -12px 24px rgba(255, 255, 255, 0.8),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.9);
+    0 6px 8px rgba(0, 0, 0, 0.12),
+    0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
 .ui-btn-neumorphic:active {
+  background: #6b7280;
   box-shadow: 
-    4px 4px 8px rgba(0, 0, 0, 0.1),
-    -4px -4px 8px rgba(255, 255, 255, 0.7),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 /* Loading state animation */
@@ -396,19 +283,7 @@
   margin-left: 0.5rem;
 }
 
-/* Enhanced animations */
-@keyframes buttonPulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-.ui-btn.ui-btn-gradient:hover {
-  animation: buttonPulse 2s ease-in-out infinite;
-}
+/* Simple animations removed for shadcn style */
 
 /* Accessibility improvements */
 .ui-btn:focus-visible {
