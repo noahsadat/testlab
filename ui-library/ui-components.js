@@ -1,4 +1,4 @@
-// UI Library - Button Components JavaScript
+// UI Library - Button Components JavaScript (Simplified)
 
 class UIButton {
   constructor() {
@@ -83,7 +83,7 @@ class UIButton {
   // Add accessibility features
   addAccessibilityFeatures() {
     document.addEventListener('DOMContentLoaded', () => {
-      const buttons = document.querySelectorAll('.ui-btn');
+      const buttons = документ.querySelectorAll('.ui-btn');
       
       buttons.forEach(button => {
         // Ensure proper ARIA attributes
@@ -106,12 +106,11 @@ class UIButton {
   }
 }
 
-// Enhanced button factory functions
+// Enhanced button factory function
 const createButton = (options = {}) => {
   const {
     text = 'Button',
-    variant = 'primary',
-    size = 'default',
+    variant = 'default',
     className = '',
     onClick = null,
     disabled = false,
@@ -121,11 +120,18 @@ const createButton = (options = {}) => {
   } = options;
 
   const button = document.createElement('button');
-  button.className = `ui-btn ui-btn-${variant}`;
   
-  if (size !== 'default') {
-    button.classList.add(`ui-btn-${size}`);
-  }
+  // Set button class based on variant
+  const variantMap = {
+    'default': 'ui-btn-default',
+    'secondary': 'ui-btn-secondary', 
+    'destructive': 'ui-btn-destructive',
+    'outline': 'ui-btn-outline',
+    'ghost': 'ui-btn-ghost',
+    'link': 'ui-btn-link'
+  };
+  
+  button.className = `ui-btn ${variantMap[variant] || variantMap['default']}`;
   
   if (className) {
     button.classList.add(...className.split(' '));
@@ -142,7 +148,7 @@ const createButton = (options = {}) => {
   if (icon) {
     const iconElement = document.createElement('span');
     iconElement.innerHTML = icon;
-    iconElement.className = loading ? 'ui-btn-icon' : 'ui-btn-icon';
+    iconElement.className = 'ui-btn-icon';
     
     const contentSpan = document.createElement('span');
     contentSpan.className = 'ui-btn-content';
@@ -169,33 +175,33 @@ const createButton = (options = {}) => {
   return button;
 };
 
-// Specialized button creators
-const createGradientButton = (text, onClick = null) => {
+// Specialized button creators for common use cases
+const createLoadingButton = (text, variant = 'default', onClick = null) => {
   return createButton({
     text,
-    variant: 'gradient',
+    variant,
     onClick,
-    className: 'font-semibold'
+    loading: true
   });
 };
 
-const createNeumorphicButton = (text, onClick = null) => {
+const createIconButton = (text, icon, variant = 'default', onClick = null) => {
   return createButton({
     text,
-    variant: 'neumorphic',
+    variant,
+    icon,
     onClick
   });
 };
 
-const createLoadingButton = (text, onClick = null) => {
-  const button = createButton({
-    text,
-    variant: 'primary',
-    onClick
-  });
-  
-  button.classList.add('ui-btn-loading');
-  return button;
+const toggleButtonLoading = (button, isLoading) => {
+  if (isLoading) {
+    button.classList.add('ui-btn-loading');
+    button.disabled = true;
+  } else {
+    button.classList.remove('ui-btn-loading');
+    button.disabled = false;
+  }
 };
 
 // Export for module usage
@@ -203,9 +209,9 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = { 
     UIButton, 
     createButton, 
-    createGradientButton, 
-    createNeumorphicButton, 
-    createLoadingButton 
+    createLoadingButton,
+    createIconButton,
+    toggleButtonLoading
   };
 }
 
@@ -217,6 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Global exposure for direct usage
 window.UIButton = UIButton;
 window.createButton = createButton;
-window.createGradientButton = createGradientButton;
-window.createNeumorphicButton = createNeumorphicButton;
 window.createLoadingButton = createLoadingButton;
+window.createIconButton = createIconButton;
+window.toggleButtonLoading = toggleButtonLoading;

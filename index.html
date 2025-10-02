@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UI Library Demo</title>
+    <title>UI Library Demo - Simplified Button Collection</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Import UI Library -->
     <link rel="stylesheet" href="ui-library/ui-components.css">
@@ -12,8 +12,8 @@
     <!-- Header -->
     <header class="bg-white border-b border-gray-200 py-6">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h1 class="text-4xl font-bold text-gray-900 mb-2">UI Library Demo</h1>
-            <p class="text-gray-600">Beautiful black and white button components with shadcn-inspired design</p>
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Simplified UI Library</h1>
+            <p class="text-gray-600">Clean button components with shadcn-inspired design</p>
         </div>
     </header>
 
@@ -21,32 +21,32 @@
     <main class="max-w-4xl mx-auto px-6 py-12">
         <!-- Button Variants Section -->
         <section class="mb-16">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Premium Button Library</h2>
-            <p class="text-gray-600 mb-8">Beautiful, modern buttons with glass morphism effects and premium rounded design</p>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Button Variants</h2>
+            <p class="text-gray-600 mb-8">Essential button styles for modern web applications</p>
             
             <!-- Core Variants -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Primary Button -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Default Button -->
                 <div class="space-y-3">
-                    <h3 class="text-sm font-medium text-gray-600">Primary</h3>
-                    <button class="ui-btn ui-btn-primary w-full">
-                        Premium Primary
+                    <h3 class="text-sm font-medium text-gray-600">Default</h3>
+                    <button class="ui-btn ui-btn-default w-full">
+                        <span class="ui-btn-content">Default</span>
                     </button>
                 </div>
 
                 <!-- Secondary Button -->
                 <div class="space-y-3">
-                    <h3 class="text-sm font-medium text-gray-600">Secondary</h3>
+                    <h3 class="текст-sm font-medium text-gray-600">Secondary</h3>
                     <button class="ui-btn ui-btn-secondary w-full">
-                        Glass Secondary
+                        <span class="ui-btn-content">Secondary</span>
                     </button>
                 </div>
 
-                <!-- Ghost Button -->
+                <!-- Destructive Button -->
                 <div class="space-y-3">
-                    <h3 class="text-sm font-medium text-gray-600">Ghost</h3>
-                    <button class="ui-btn ui-btn-ghost w-full">
-                        Subtle Ghost
+                    <h3 class="text-sm font-medium text-gray-600">Destructive</h3>
+                    <button class="ui-btn ui-btn-destructive w-full">
+                        <span class="ui-btn-content">Destructive</span>
                     </button>
                 </div>
 
@@ -54,60 +54,96 @@
                 <div class="space-y-3">
                     <h3 class="text-sm font-medium text-gray-600">Outline</h3>
                     <button class="ui-btn ui-btn-outline w-full">
-                        Clean Outline
+                        <span class="ui-btn-content">Outline</span>
+                    </button>
+                </div>
+
+                <!-- Ghost Button -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-medium text-gray-600">Ghost</h3>
+                    <button class="ui-btn ui-btn-ghost w-full">
+                        <span class="ui-btn-content">Ghost</span>
+                    </button>
+                </div>
+
+                <!-- Link Button -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-medium text-gray-600">Link</h3>
+                    <button class="ui-btn ui-btn-link w-full">
+                        <span class="ui-btn-content">Link</span>
                     </button>
                 </div>
             </div>
-
-            <!-- Premium Variants -->
-            <div class="mb-12">
-                <h3 class="text-xl font-semibold text-gray-800 mb-6">Premium Variants</h3>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-                    <!-- Gradient Button -->
-                    <div class="space-y-3">
-                        <h4 class="text-sm font-medium text-gray-600">Gradient</h4>
-                        <button class="ui-btn ui-btn-gradient w-full">
-                            Purple Gradient
-                        </button>
-                    </div>
-
-                    <!-- Neumorphic Button -->
-                    <div class="space-y-3 bg-gray-100 rounded-2xl p-4">
-                        <h4 class="text-sm font-medium text-gray-600">Neumorphic</h4>
-                        <button class="ui-btn ui-btn-neumorphic w-full">
-                            Soft Press
-                        </button>
-                    </div>
-
-                    <!-- Loading Button -->
-                    <div class="space-y-3">
-                        <h4 class="text-sm font-medium text-gray-600">Loading</h4>
-                        <button id="loading-demo" class="ui-btn ui-btn-primary w-full">
-                            <span class="ui-btn-content">Click to Load</span>
-                        </button>
-                    </div>
-                </div>
         </section>
 
-        <!-- Button Sizes Section -->
+        <!-- Button with Icons Section -->
         <section class="mb-16">
-            <h2 class="text-2xl font-semibold text-gray-900 mb-8">Button Sizes</h2>
-            <div class="flex flex-wrap items-center gap-6">
-                <div class="text-center space-y-2">
-                    <p class="text-xs text-gray-500">Small</p>
-                    <button class="ui-btn ui-btn-primary ui-btn-sm">Small</button>
+            <h2 class="text-2xl font-semibold text-gray-900 mb-8">Buttons with Icons</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Default with Icon -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-medium text-gray-600">Default with Icon</h3>
+                    <button class="ui-btn ui-btn-default w-full">
+                        <span class="ui-btn-icon">💾</span>
+                        <span class="ui-btn-content">Save</span>
+                    </button>
                 </div>
-                <div class="text-center space-y-2">
-                    <p class="text-xs text-gray-500">Default</p>
-                    <button class="ui-btn ui-btn-primary">Default</button>
+
+                <!-- Secondary with Icon -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-medium text-gray-600">Secondary with Icon</h3>
+                    <button class="ui-btn ui-btn-secondary w-full">
+                        <span class="ui-btn-icon">📤</span>
+                        <span class="ui-btn-content">Upload</span>
+                    </button>
                 </div>
-                <div class="text-center space-y-2">
-                    <p class="text-xs text-gray-500">Large</p>
-                    <button class="ui-btn ui-btn-primary ui-btn-lg">Large</button>
+
+                <!-- Outline with Icon -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-medium text-gray-600">Outline with Icon</h3>
+                    <button class="ui-btn ui-btn-outline w-full">
+                        <span class="ui-btn-icon">🔍</span>
+                        <span class="ui-btn-content">Search</span>
+                    </button>
                 </div>
-                <div class="text-center space-y-2">
-                    <p class="text-xs text-gray-500">Extra Large</p>
-                    <button class="ui-btn ui-btn-primary ui-btn-xl">Extra Large</button>
+
+                <!-- Ghost with Icon -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-medium text-gray-600">Ghost with Icon</h3>
+                    <button class="ui-btn ui-btn-ghost w-full">
+                        <span class="ui-btn-icon">⚙️</span>
+                        <span class="ui-btn-content">Settings</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading State Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-8">Loading States</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Default Loading -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-medium text-gray-600">Default Loading</h3>
+                    <button id="loading-default" class="ui-btn ui-btn-default w-full ui-btn-loading">
+                        <span class="ui-btn-content">Loading...</span>
+                    </button>
+                </div>
+
+                <!-- Secondary Loading -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-medium text-gray-600">Secondary Loading</h3>
+                    <button id="loading-secondary" class="ui-btn ui-btn-secondary w-full">
+                        <span class="ui-btn-content">Click to Load</span>
+                    </button>
+                </div>
+
+                <!-- Destructive Loading -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-medium text-gray-600">Destructive Loading</h3>
+                    <button id="loading-destructive" class="ui-btn ui-btn-destructive w-full">
+                        <span class="ui-btn-content">Delete</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -117,12 +153,13 @@
             <h2 class="text-2xl font-semibold text-gray-900 mb-8">Interactive Demo</h2>
             <div class="bg-white rounded-lg border border-gray-200 p-6">
                 <div class="flex flex-wrap gap-4 mb-6">
-                    <button id="demo-btn-1" class="ui-btn ui-btn-primary">Click Me!</button>
+                    <button id="demo-btn-1" class="ui-btn ui-btn-default">Click Me!</button>
                     <button id="demo-btn-2" class="ui-btn ui-btn-secondary">Counter: <span id="counter">0</span></button>
-                    <button id="demo-btn-3" class="ui-btn ui-btn-outline">Toggle Mode</button>
+                    <button id="demo-btn-3" class="ui-btn ui-btn-outline">Toggle State</button>
+                    <button id="demo-btn-4" class="ui-btn ui-btn-destructive">⚠️ Danger</button>
                 </div>
                 <div id="demo-output" class="text-gray-600">
-                    Click any button above to see interactions in action!
+                    Click any button above to see the interactions in action!
                 </div>
             </div>
         </section>
@@ -132,18 +169,29 @@
             <h2 class="text-2xl font-semibold text-gray-900 mb-8">How to Use</h2>
             <div class="bg-gray-900 rounded-lg p-6 text-green-400 font-mono text-sm overflow-x-auto">
                 <pre><code>&lt;!-- Basic Usage --&gt;
-&lt;button class="ui-btn ui-btn-primary"&gt;Primary Button&lt;/button&gt;
+&lt;button class="ui-btn ui-btn-default"&gt;Default Button&lt;/button&gt;
+&lt;button class="ui-btn ui-btn-secondary"&gt;Secondary Button&lt;/button&gt;
+&lt;button class="ui-btn ui-btn-destructive"&gt;Destructive Button&lt;/button&gt;
+&lt;button class="ui-btn ui-btn-outline"&gt;Outline Button&lt;/button&gt;
+&lt;button class="ui-btn ui-btn-ghost"&gt;Ghost Button&lt;/button&gt;
+&lt;button class="ui-btn ui-btn-link"&gt;Link Button&lt;/button&gt;
 
-&lt;!-- With Size Variants --&gt;
-&lt;button class="ui-btn ui-btn-secondary ui-btn-sm"&gt;Small Button&lt;/button&gt;
-&lt;button class="ui-btn ui-btn-outline ui-btn-lg"&gt;Large Button&lt;/button&gt;
+&lt;!-- With Icons --&gt;
+&lt;button class="ui-btn ui-btn-default"&gt;
+    &lt;span class="ui-btn-icon"&gt;💾&lt;/span&gt;
+    &lt;span class="ui-btn-content"&gt;Save&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- With Loading State --&gt;
+&lt;button class="ui-btn ui-btn-default ui-btn-loading"&gt;
+    &lt;span class="ui-btn-content"&gt;Loading...&lt;/span&gt;
+&lt;/button&gt;
 
 &lt;!-- JavaScript Factory Function --&gt;
 &lt;script&gt;
 const button = createButton({
   text: 'Dynamic Button',
-  variant: 'primary',
-  size: 'default',
+  variant: 'default', // 'default', 'secondary', 'destructive', 'outline', 'ghost', 'link'
   onClick: () => console.log('Clicked!')
 });
 document.body.appendChild(button);
@@ -163,29 +211,34 @@ document.body.appendChild(button);
 
             // Demo button 1
             document.getElementById('demo-btn-1').addEventListener('click', () => {
-                output.innerHTML = '🎉 Premium primary button clicked! Notice the enhanced glass morphism effects and smooth animations.';
+                output.innerHTML = '🎉 Default button clicked! Clean and simple interaction.';
             });
 
             // Demo button 2 (counter)
             document.getElementById('demo-btn-2').addEventListener('click', () => {
                 count++;
                 counterSpan.textContent = count;
-                output.innerHTML = `🔢 Counter button clicked! Current count: <strong>${count}</strong>. The gradient button adds a premium feel to interactions.`;
+                output.innerHTML = `🔢 Counter updated! Current count: <strong>${count}</strong>.`;
             });
 
             // Demo button 3 (toggle)
             let isActive = false;
             document.getElementById('demo-btn-3').addEventListener('click', () => {
                 isActive = !isActive;
-                document.getElementById('demo-btn-3').textContent = isActive ? 'Disable Mode' : 'Toggle Mode';
-                output.innerHTML = `🔄 Toggle ${isActive ? 'activated' : 'deactivated'}! The neumorphic button provides delightful tactile feedback.`;
+                document.getElementById('demo-btn-3').textContent = isActive ? '✅ Active' : 'Toggle State';
+                output.innerHTML = `🔄 State ${isActive ? 'activated' : 'deactivated'}!`;
             });
 
-            // Loading button demo
-            const loadingDemo = document.getElementById('loading-demo');
-            if (loadingDemo) {
-                loadingDemo.addEventListener('click', () => {
-                    const button = loadingDemo;
+            // Demo button 4 (destructive)
+            document.getElementById('demo-btn-4').addEventListener('click', () => {
+                output.innerHTML = '⚠️ Destructive action triggered! Use with caution.';
+            });
+
+            // Loading button demos
+            const loadingSecondary = document.getElementById('loading-secondary');
+            if (loadingSecondary) {
+                loadingSecondary.addEventListener('click', () => {
+                    const button = loadingSecondary;
                     const originalContent = button.innerHTML;
                     
                     // Add loading state
@@ -196,21 +249,53 @@ document.body.appendChild(button);
                     setTimeout(() => {
                         button.classList.remove('ui-btn-loading');
                         button.disabled = false;
-                        button.innerHTML = '<span class="ui-btn-content">✅ Loaded!</span>';
+                        button.innerHTML = '<span class="ui-btn-content">✅ Success!</span>';
                         
                         // Reset after 2 seconds
                         setTimeout(() => {
                             button.innerHTML = originalContent;
                         }, 2000);
-                    }, 3000);
+                    }, 2000);
                 });
+            }
+
+            const loadingDestructive = document.getElementById('loading-destructive');
+            if (loadingDestructive) {
+                loadingDestructive.addEventListener('click', () => {
+                    const button = loadingDestructive;
+                    const originalContent = button.innerHTML;
+                    
+                    // Add loading state
+                    button.classList.add('ui-btn-loading');
+                    button.disabled = true;
+                    
+                    // Simulate loading
+                    setTimeout(() => {
+                        button.classList.remove('ui-btn-loading');
+                        button.disabled = false;
+                        button.innerHTML = '<span class="ui-btn-content">🗑️ Deleted</span>';
+                        
+                        // Reset after 2 seconds
+                        setTimeout(() => {
+                            button.innerHTML = originalContent;
+                        }, 2000);
+                    }, 2000);
+                });
+            }
+
+            // Auto-toggle default loading button
+            const loadingDefault = document.getElementById('loading-default');
+            if (loadingDefault) {
+                setInterval(() => {
+                    loadingDefault.classList.toggle('ui-btn-loading');
+                }, 3000);
             }
 
             // Show library is loaded
             setTimeout(() => {
                 if (window.UIButton) {
-                    console.log('✅ Premium UI Library loaded successfully!');
-                    console.log('🎨 Features: Glass morphism, gradient buttons, neumorphic design, enhanced animations');
+                    console.log('✅ Simplified UI Library loaded successfully!');
+                    console.log('🎨 Available variants: default, secondary, destructive, outline, ghost, link');
                 }
             }, 100);
         });
