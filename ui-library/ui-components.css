@@ -1,4 +1,4 @@
-/* UI Library - Button Components */
+/* UI Library - Button Components (Simplified) */
 
 /* Base button styles - shadcn inspired design */
 .ui-btn {
@@ -35,27 +35,27 @@
   transition-duration: 0.1s;
 }
 
-/* Primary Button - shadcn style */
-.ui-btn-primary {
+/* Default Button (Primary) */
+.ui-btn-default {
   background: #000000;
   color: white;
   border-color: #e5e7eb;
 }
 
-.ui-btn-primary:hover {
+.ui-btn-default:hover {
   background: #1a1a1a;
   border-color: #d1d5db;
 }
 
-.ui-btn-primary:active {
+.ui-btn-default:active {
   background: #0d0d0d;
 }
 
-.ui-btn-primary:focus-visible {
+.ui-btn-default:focus-visible {
   @apply ring-gray-600 ring-offset-white;
 }
 
-/* Secondary Button - shadcn style */
+/* Secondary Button */
 .ui-btn-secondary {
   background: #374151;
   color: white;
@@ -75,169 +75,90 @@
   @apply ring-gray-300 ring-offset-white;
 }
 
-/* Ghost Button - shadcn style */
-.ui-btn-ghost {
-  background: transparent;
+/* Destructive Button */
+.ui-btn-destructive {
+  background: #dc2626;
   color: white;
-  border-color: #e5e7eb;
-  position: relative;
+  border-color: #dc2626;
 }
 
-.ui-btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #d1d5db;
+.ui-btn-destructive:hover {
+  background: #b91c1c;
+  border-color: #b91c1c;
 }
 
-.ui-btn-ghost:active {
-  background: rgba(255, 255, 255, 0.2);
+.ui-btn-destructive:active {
+  background: #991b1b;
 }
 
-.ui-btn-ghost:focus-visible {
-  @apply ring-gray-300 ring-offset-white;
+.ui-btn-destructive:focus-visible {
+  @apply ring-red-500 ring-offset-white;
 }
 
-/* Outline Button - shadcn style */
+/* Outline Button */
 .ui-btn-outline {
   background: transparent;
-  color: white;
+  color: #000000;
   border: 1px solid #e5e7eb;
 }
 
 .ui-btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   border-color: #d1d5db;
 }
 
 .ui-btn-outline:active {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .ui-btn-outline:focus-visible {
   @apply ring-gray-300 ring-offset-white;
 }
 
-/* Enhanced size variants - shadcn style */
-.ui-btn-sm {
-  @apply text-xs;
-  padding: 0.375rem 0.75rem;
-  min-height: 2rem;
-  border-radius: 0.375rem;
-  font-weight: 500;
+/* Ghost Button */
+.ui-btn-ghost {
+  background: transparent;
+  color: #000000;
+  border-color: transparent;
 }
 
-.ui-btn-lg {
-  @apply text-base;
-  padding: 0.625rem 1.5rem;
-  min-height: 3rem;
-  border-radius: 0.375rem;
-  font-weight: 500;
+.ui-btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: transparent;
 }
 
-/* Extra large variant */
-.ui-btn-xl {
-  @apply text-lg;
-  padding: 0.875rem 2rem;
-  min-height: 3.5rem;
-  border-radius: 0.375rem;
-  font-weight: 500;
+.ui-btn-ghost:active {
+  background: rgba(0, 0, 0, 0.1);
 }
 
-/* Simple shadcn-style button effects */
-
-/* Enhanced dark mode variants with premium glass effects */
-@media (prefers-color-scheme: dark) {
-  .ui-btn-secondary {
-    background: rgba(31, 41, 55, 0.8);
-    @apply text-white;
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 
-      0 4px 16px rgba(0, 0, 0, 0.2),
-      0 2px 8px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-  
-  .ui-btn-secondary:hover {
-    background: rgba(55, 65, 81, 0.9);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 
-      0 12px 28px rgba(0, 0, 0, 0.3),
-      0 6px 15px rgba(0, 0, 0, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  }
-  
-  .ui-btn-ghost {
-    @apply text-gray-300;
-  }
-  
-  .ui-btn-ghost:hover {
-    @apply text-white bg-gray-800/40;
-    backdrop-filter: blur(12px);
-    box-shadow: 
-      0 8px 25px rgba(0, 0, 0, 0.15),
-      0 0 0 1px rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .ui-btn-outline {
-    @apply text-gray-300;
-    background: rgba(31, 41, 55, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 
-      inset 0 1px 0 rgba(255, 255, 255, 0.05),
-      0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .ui-btn-outline:hover {
-    @apply text-white;
-    background: rgba(31, 41, 55, 0.3);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 
-      0 8px 25px rgba(0, 0, 0, 0.2),
-      0 0 0 1px rgba(255, 255, 255, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
+.ui-btn-ghost:focus-visible {
+  @apply ring-gray-300 ring-offset-white;
 }
 
-/* Gradient button variants - shadcn style */
-.ui-btn-gradient {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border-color: #e5e7eb;
+/* Link Button */
+.ui-btn-link {
+  background: transparent;
+  color: #3b82f6;
+  border-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 0;
+  min-height: auto;
 }
 
-.ui-btn-gradient:hover {
-  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-  border-color: #d1d5db;
+.ui-btn-link:hover {
+  background: transparent;
+  color: #2563eb;
+  text-decoration-color: #2563eb;
 }
 
-.ui-btn-gradient:active {
-  background: linear-gradient(135deg, #4c51bf 0%, #581c87 100%);
+.ui-btn-link:active {
+  background: transparent;
+  color: #1d4ed8;
 }
 
-/* Neumorphism style button - shadcn inspired */
-.ui-btn-neumorphic {
-  background: #374151;
-  color: white;
-  border-color: #e5e7eb;
-  box-shadow: 
-    0 4px 6px rgba(0, 0, 0, 0.1),
-    0 2px 4px rgba(0, 0, 0, 0.06);
-}
-
-.ui-btn-neumorphic:hover {
-  background: #4b5563;
-  border-color: #d1d5db;
-  box-shadow: 
-    0 6px 8px rgba(0, 0, 0, 0.12),
-    0 3px 6px rgba(0, 0, 0, 0.08);
-}
-
-.ui-btn-neumorphic:active {
-  background: #6b7280;
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.1),
-    0 1px 3px rgba(0, 0, 0, 0.06);
+.ui-btn-link:focus-visible {
+  @apply ring-blue-500 ring-offset-white;
 }
 
 /* Loading state animation */
@@ -283,8 +204,6 @@
   margin-left: 0.5rem;
 }
 
-/* Simple animations removed for shadcn style */
-
 /* Accessibility improvements */
 .ui-btn:focus-visible {
   outline: 2px solid #3b82f6;
@@ -297,7 +216,7 @@
     border-width: 2px;
   }
   
-  .ui-btn-primary {
+  .ui-btn-default {
     border-color: #ffffff;
   }
   
@@ -315,9 +234,38 @@
   .ui-btn:hover {
     transform: none;
   }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .ui-btn-default {
+    background: #ffffff;
+    color: #000000;
+  }
   
-  .ui-btn::before,
-  .ui-btn::after {
-    display: none;
+  .ui-btn-default:hover {
+    background: #f9fafb;
+  }
+  
+  .ui-btn-default:active {
+    background: #f3f4f6;
+  }
+  
+  .ui-btn-outline {
+    color: #ffffff;
+    border-color: #374151;
+  }
+  
+  .ui-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #4b5563;
+  }
+  
+  .ui-btn-ghost {
+    color: #ffffff;
+  }
+  
+  .ui-btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
   }
 }
