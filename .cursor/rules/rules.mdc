@@ -1,0 +1,18 @@
+---
+alwaysApply: true
+---
+
+# Project Rules
+
+## Design Guidelines
+- Use shadcn style components and design patterns
+- Implement styling with Tailwind CSS for consistency and maintainability
+
+## Technical Stack
+- Project is built using HTML, CSS, and JavaScript
+- No additional frameworks or libraries unless explicitly requested
+
+## File Organization
+- When adding new files, always structure them professionally with proper organization
+- Maintain clear separation of concerns between HTML structure, CSS styling, and JavaScript functionality
+- Use descriptive naming conventions for files and directories
