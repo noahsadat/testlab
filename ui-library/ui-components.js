@@ -106,7 +106,7 @@ class UIButton {
   }
 }
 
-// Button factory functions
+// Enhanced button factory functions
 const createButton = (options = {}) => {
   const {
     text = 'Button',
@@ -114,7 +114,10 @@ const createButton = (options = {}) => {
     size = 'default',
     className = '',
     onClick = null,
-    disabled = false
+    disabled = false,
+    loading = false,
+    icon = null,
+    iconPosition = 'left'
   } = options;
 
   const button = document.createElement('button');
@@ -128,8 +131,36 @@ const createButton = (options = {}) => {
     button.classList.add(...className.split(' '));
   }
 
-  button.textContent = text;
+  if (loading) {
+    button.classList.add('ui-btn-loading');
+    button.disabled = true;
+  }
+
   button.disabled = disabled;
+
+  // Add icon support
+  if (icon) {
+    const iconElement = document.createElement('span');
+    iconElement.innerHTML = icon;
+    iconElement.className = loading ? 'ui-btn-icon' : 'ui-btn-icon';
+    
+    const contentSpan = document.createElement('span');
+    contentSpan.className = 'ui-btn-content';
+    contentSpan.textContent = text;
+
+    if (iconPosition === 'left') {
+      button.appendChild(iconElement);
+      button.appendChild(contentSpan);
+    } else {
+      button.appendChild(contentSpan);
+      button.appendChild(iconElement);
+    }
+  } else {
+    const contentSpan = document.createElement('span');
+    contentSpan.className = 'ui-btn-content';
+    contentSpan.textContent = text;
+    button.appendChild(contentSpan);
+  }
 
   if (onClick) {
     button.addEventListener('click', onClick);
@@ -138,9 +169,44 @@ const createButton = (options = {}) => {
   return button;
 };
 
+// Specialized button creators
+const createGradientButton = (text, onClick = null) => {
+  return createButton({
+    text,
+    variant: 'gradient',
+    onClick,
+    className: 'font-semibold'
+  });
+};
+
+const createNeumorphicButton = (text, onClick = null) => {
+  return createButton({
+    text,
+    variant: 'neumorphic',
+    onClick
+  });
+};
+
+const createLoadingButton = (text, onClick = null) => {
+  const button = createButton({
+    text,
+    variant: 'primary',
+    onClick
+  });
+  
+  button.classList.add('ui-btn-loading');
+  return button;
+};
+
 // Export for module usage
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { UIButton, createButton };
+  module.exports = { 
+    UIButton, 
+    createButton, 
+    createGradientButton, 
+    createNeumorphicButton, 
+    createLoadingButton 
+  };
 }
 
 // Initialize when DOM is ready
@@ -151,3 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // Global exposure for direct usage
 window.UIButton = UIButton;
 window.createButton = createButton;
+window.createGradientButton = createGradientButton;
+window.createNeumorphicButton = createNeumorphicButton;
+window.createLoadingButton = createLoadingButton;

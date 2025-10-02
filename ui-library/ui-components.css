@@ -1,120 +1,221 @@
 /* UI Library - Button Components */
 
-/* Base button styles */
+/* Base button styles - Enhanced with premium rounded design */
 .ui-btn {
-  @apply inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 ease-in-out;
+  @apply inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-all duration-300 ease-out;
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
   @apply disabled:pointer-events-none disabled:opacity-50;
   @apply border border-transparent;
-  padding: 0.625rem 1.125rem;
-  min-height: 2.5rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  
+  /* Premium rounded corners and spacing */
+  border-radius: 16px;
+  padding: 0.75rem 1.5rem;
+  min-height: 3rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   position: relative;
   overflow: hidden;
+  
+  /* Enhanced visual depth */
+  backdrop-filter: blur(8px);
+  transform-origin: center;
+  will-change: transform, box-shadow;
+  
+  /* Smooth scaling animation */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Button hover and active effects */
+/* Enhanced hover and active effects with premium animations */
 .ui-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition-duration: 0.2s;
 }
 
 .ui-btn:active {
-  transform: translateY(0);
-  transition-duration: 100ms;
+  transform: translateY(-1px) scale(0.98);
+  transition-duration: 0.1s;
 }
 
-/* Primary Button - Black with white text */
+/* Primary Button - Premium black with gradient and glass effect */
 .ui-btn-primary {
-  @apply bg-black text-white border-black;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  @apply text-white border-transparent;
+  box-shadow: 
+    0 4px 14px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .ui-btn-primary:hover {
-  @apply bg-gray-900 border-gray-900;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  box-shadow: 
+    0 12px 28px rgba(0, 0, 0, 0.25),
+    0 6px 15px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .ui-btn-primary:active {
-  @apply bg-gray-800;
+  background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .ui-btn-primary:focus-visible {
-  @apply ring-gray-800 ring-offset-white;
+  @apply ring-gray-600 ring-offset-white;
+  box-shadow: 
+    0 0 0 3px rgba(37, 99, 235, 0.2),
+    0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Secondary Button - White with black text */
+/* Secondary Button - Premium white with glass morphism */
 .ui-btn-secondary {
-  @apply bg-white text-black border-gray-200;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.8);
+  @apply text-gray-900;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.05),
+    0 2px 8px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .ui-btn-secondary:hover {
-  @apply bg-gray-50 border-gray-300;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 12px 28px rgba(0, 0, 0, 0.08),
+    0 6px 15px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .ui-btn-secondary:active {
-  @apply bg-gray-100;
+  background: rgba(248, 250, 252, 0.9);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .ui-btn-secondary:focus-visible {
-  @apply ring-gray-500 ring-offset-white;
+  @apply ring-gray-300 ring-offset-white;
+  box-shadow: 
+    0 0 0 3px rgba(156, 163, 175, 0.2),
+    0 8px 25px rgba(0, 0, 0, 0.05);
 }
 
-/* Ghost Button - Transparent with subtle hover */
+/* Ghost Button - Ultra-premium transparent with subtle animations */
 .ui-btn-ghost {
-  @apply bg-transparent text-black border-transparent;
+  @apply bg-transparent text-gray-700 border-transparent;
+  position: relative;
+}
+
+.ui-btn-ghost::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ui-btn-ghost:hover::before {
+  opacity: 1;
 }
 
 .ui-btn-ghost:hover {
-  @apply bg-gray-100;
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  @apply text-gray-900 bg-gray-50/50;
+  backdrop-filter: blur(8px);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .ui-btn-ghost:active {
-  @apply bg-gray-200;
+  @apply bg-gray-100/60;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .ui-btn-ghost:focus-visible {
-  @apply ring-gray-500 ring-offset-white;
+  @apply ring-gray-300 ring-offset-white;
+  box-shadow: 
+    0 0 0 3px rgba(156, 163, 175, 0.15),
+    0 8px 25px rgba(0, 0, 0, 0.04);
 }
 
-/* Outline Button - Border with transparent fill */
+/* Outline Button - Premium border with glass effect */
 .ui-btn-outline {
-  @apply bg-transparent text-black border-gray-300;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  @apply bg-transparent text-gray-700;
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .ui-btn-outline:hover {
-  @apply bg-gray-50 border-gray-400;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  @apply text-gray-900;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .ui-btn-outline:active {
-  @apply bg-gray-100 border-gray-500;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .ui-btn-outline:focus-visible {
-  @apply ring-gray-500 ring-offset-white;
+  @apply ring-gray-300 ring-offset-white;
+  box-shadow: 
+    0 0 0 3px rgba(156, 163, 175, 0.2),
+    0 8px 25px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Size variants */
+/* Enhanced size variants with premium rounded design */
 .ui-btn-sm {
   @apply text-xs;
-  padding: 0.5rem 0.875rem;
-  min-height: 2rem;
+  padding: 0.625rem 1.25rem;
+  min-height: 2.5rem;
+  border-radius: 12px;
+  font-weight: 600;
 }
 
 .ui-btn-lg {
   @apply text-base;
-  padding: 0.75rem 1.5rem;
-  min-height: 3rem;
+  padding: 1rem 2rem;
+  min-height: 3.5rem;
+  border-radius: 20px;
+  font-weight: 600;
 }
 
-/* Ripple effect (will be implemented with JS) */
+/* Extra large variant for premium feel */
+.ui-btn-xl {
+  @apply text-lg;
+  padding: 1.25rem 2.5rem;
+  min-height: 4rem;
+  border-radius: 24px;
+  font-weight: 600;
+}
+
+/* Enhanced ripple effect for premium feel */
 .ui-btn::before {
   content: '';
   position: absolute;
@@ -123,40 +224,225 @@
   width: 0;
   height: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transition: width 0.6s, height 0.6s;
-  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate(-50%, -50%) scale(0);
   pointer-events: none;
+  z-index: 0;
 }
 
 .ui-btn:active::before {
-  width: 300px;
-  height: 300px;
+  transform: translate(-50%, -50%) scale(4);
 }
 
-/* Dark mode variants */
+/* Subtle glow effect for premium buttons */
+.ui-btn::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ui-btn:hover::after {
+  opacity: 1;
+}
+
+/* Enhanced dark mode variants with premium glass effects */
 @media (prefers-color-scheme: dark) {
   .ui-btn-secondary {
-    @apply bg-gray-800 text-white border-gray-700;
+    background: rgba(31, 41, 55, 0.8);
+    @apply text-white;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      0 4px 16px rgba(0, 0, 0, 0.2),
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
   
   .ui-btn-secondary:hover {
-    @apply bg-gray-700 border-gray-600;
+    background: rgba(55, 65, 81, 0.9);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 12px 28px rgba(0, 0, 0, 0.3),
+      0 6px 15px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
   
   .ui-btn-ghost {
-    @apply text-white;
+    @apply text-gray-300;
   }
   
   .ui-btn-ghost:hover {
-    @apply bg-gray-800;
+    @apply text-white bg-gray-800/40;
+    backdrop-filter: blur(12px);
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   .ui-btn-outline {
-    @apply text-white border-gray-600;
+    @apply text-gray-300;
+    background: rgba(31, 41, 55, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 1px 3px rgba(0, 0, 0, 0.1);
   }
   
   .ui-btn-outline:hover {
-    @apply bg-gray-800 border-gray-500;
+    @apply text-white;
+    background: rgba(31, 41, 55, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 8px 25px rgba(0, 0, 0, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Premium gradient button variants */
+.ui-btn-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  @apply text-white border-transparent;
+  box-shadow: 
+    0 4px 14px rgba(102, 126, 234, 0.25),
+    0 2px 8px rgba(118, 75, 162, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.ui-btn-gradient:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  box-shadow: 
+    0 12px 28px rgba(102, 126, 234, 0.35),
+    0 6px 15px rgba(118, 75, 162, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.ui-btn-gradient:active {
+  background: linear-gradient(135deg, #4c51bf 0%, #581c87 100%);
+}
+
+/* Neumorphism style button */
+.ui-btn-neumorphic {
+  background: #f3f4f6;
+  @apply text-gray-700 border-transparent;
+  box-shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.1),
+    -8px -8px 16px rgba(255, 255, 255, 0.7),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.ui-btn-neumorphic:hover {
+  box-shadow: 
+    12px 12px 24px rgba(0, 0, 0, 0.12),
+    -12px -12px 24px rgba(255, 255, 255, 0.8),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.ui-btn-neumorphic:active {
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.1),
+    -4px -4px 8px rgba(255, 255, 255, 0.7),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Loading state animation */
+.ui-btn-loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.ui-btn-loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.ui-btn-loading .ui-btn-content {
+  opacity: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Icon support */
+.ui-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  font-size: 0.875em;
+}
+
+.ui-btn-icon:last-child {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+/* Enhanced animations */
+@keyframes buttonPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.ui-btn.ui-btn-gradient:hover {
+  animation: buttonPulse 2s ease-in-out infinite;
+}
+
+/* Accessibility improvements */
+.ui-btn:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .ui-btn {
+    border-width: 2px;
+  }
+  
+  .ui-btn-primary {
+    border-color: #ffffff;
+  }
+  
+  .ui-btn-secondary {
+    border-color: #000000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .ui-btn {
+    transition: none;
+  }
+  
+  .ui-btn:hover {
+    transform: none;
+  }
+  
+  .ui-btn::before,
+  .ui-btn::after {
+    display: none;
   }
 }
