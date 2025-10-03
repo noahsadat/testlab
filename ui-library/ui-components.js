@@ -15,7 +15,8 @@ class UIButton {
   addRippleEffect() {
     document.addEventListener('click', (event) => {
       const button = event.target.closest('.ui-btn');
-      if (button) {
+      if (!button) return;
+      if (button.dataset.ripple === 'true') {
         this.createRipple(event, button);
       }
     });
@@ -74,7 +75,7 @@ class UIButton {
         if (button) {
           event.preventDefault();
           button.click();
-          this.createRipple(event, button);
+          // Ripple will be handled by the click listener if enabled via data-ripple
         }
       }
     });
