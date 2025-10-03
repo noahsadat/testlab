@@ -83,7 +83,7 @@ class UIButton {
   // Add accessibility features
   addAccessibilityFeatures() {
     document.addEventListener('DOMContentLoaded', () => {
-      const buttons = документ.querySelectorAll('.ui-btn');
+      const buttons = document.querySelectorAll('.ui-btn');
       
       buttons.forEach(button => {
         // Ensure proper ARIA attributes
