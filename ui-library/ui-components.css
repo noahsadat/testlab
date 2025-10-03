@@ -1,5 +1,10 @@
 /* UI Library - Button Components (Simplified) */
 
+/* Apply Inter font family globally - shadcn standard */
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
 /* Base button styles - exact shadcn design */
 .ui-btn {
   @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors;
@@ -11,6 +16,7 @@
   padding: 0 1rem;
   font-weight: 500;
   position: relative;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   
   /* Smooth transitions */
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -58,17 +64,22 @@
   background: hsl(0 84.2% 60.2% / 0.9);
 }
 
-/* Outline Button - shadcn exact colors */
+/* Outline Button - shadcn exact colors with improved text visibility */
 .ui-btn-outline {
   @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
   background: hsl(0 0% 100%);
   color: hsl(222.2 84% 4.9%);
   border: 1px solid hsl(214.3 31.8% 91.4%);
+  /* Ensure text is always visible */
+  text-shadow: none;
+  opacity: 1;
 }
 
 .ui-btn-outline:hover {
   background: hsl(210 40% 96%);
   color: hsl(222.2 84% 4.9%);
+  /* Maintain text visibility on hover */
+  opacity: 1;
 }
 
 /* Ghost Button - shadcn exact colors */
@@ -203,11 +214,16 @@
     color: hsl(210 40% 98%);
     border-color: hsl(217.2 32.6% 17.5%);
     background: hsl(222.2 84% 4.9%);
+    /* Ensure text visibility in dark mode */
+    opacity: 1;
+    text-shadow: none;
   }
   
   .ui-btn-outline:hover {
     background: hsl(217.2 32.6% 17.5%);
     color: hsl(210 40% 98%);
+    /* Maintain text visibility on hover in dark mode */
+    opacity: 1;
   }
   
   .ui-btn-ghost {
